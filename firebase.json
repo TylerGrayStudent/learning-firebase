@@ -4,13 +4,17 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist/LearningFirebase",
+    "public": "./dist/LearningFirebase",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "rewrites": [
+      {
+        "source": "/public/**",
+        "destination": "/public.html"
+      },
       {
         "source": "**",
         "destination": "/index.html"
