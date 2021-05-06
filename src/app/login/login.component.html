@@ -1,2 +1,16 @@
-<p *ngFor="let ea of collection$ | async">{{ ea | json }}</p>
-<button (click)="click()">click</button>
+<div id="container" fxFlexLayout="row">
+  <div fxFlex="40" id="left-side">
+    <form [formGroup]="form" (ngSubmit)="onLogin(form)">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput />
+      </mat-form-field>
+      <button mat-icon-button color="primary">Login</button>
+    </form>
+  </div>
+  <div fxFlex="40" id="right-side"></div>
+</div>

@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/auth';
+import { SETTINGS, AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,13 +21,9 @@ import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/auth';
     AngularFirestoreModule,
     AngularFireAnalyticsModule,
     AngularFireStorageModule,
+    AngularFireAuthModule,
   ],
-  providers: [
-    {
-      provide: AUTH_SETTINGS,
-      useValue: { appVerificationDisabledForTesting: true },
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
