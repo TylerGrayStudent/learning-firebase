@@ -1,6 +1,7 @@
-import { Email } from './../models/email';
+import { LoginInfo } from '../../login/pages/login/login-page.component';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -8,33 +9,20 @@ import { Injectable } from '@angular/core';
 export class LoginService {
   constructor(private auth: AngularFireAuth) {}
 
-  async login(email: Email, password: string): Promise<any | never> {
-    try {
-      if (!email.isValid()) {
-        throw { error: 'Email is not valid' };
-      }
-      const results = this.auth.signInWithEmailAndPassword(
-        email.value,
-        password
-      );
-      return results;
-    } catch (e: any) {
-      console.log(e);
-    }
+  login(info: LoginInfo): Promise<any | never> {
+    return this.auth.signInWithEmailAndPassword(info.email, info.password);
   }
 
-  async register(email: Email, password: string): Promise<any | never> {
-    try {
-      if (!email.isValid()) {
-        throw { error: 'Email is not valid' };
-      }
-      const results = this.auth.createUserWithEmailAndPassword(
-        email.value,
-        password
-      );
-      return results;
-    } catch (e: any) {
-      console.log(e);
-    }
+  register(info: LoginInfo): Promise<any | never> {
+    return this.auth.createUserWithEmailAndPassword(info.email, info.password);
+  }
+
+  getLoginInfoFromForm(form: FormGroup): LoginInfo {
+    const email = form.get('email')?.value;
+    const password = form.get('password')?.value;
+    return {
+      email,
+      password,
+    };
   }
 }
