@@ -13,15 +13,7 @@ export interface LoginInfo {
 })
 export class UserService {
   public user$ = this.auth.user;
-  constructor(private auth: AngularFireAuth, private router: Router) {
-    this.user$.subscribe((user) => {
-      if (user) {
-        this.router.navigate(['home']);
-      } else {
-        this.router.navigate(['login']);
-      }
-    });
-  }
+  constructor(private auth: AngularFireAuth, private router: Router) {}
 
   login(info: LoginInfo): Promise<any | never> {
     return this.auth.signInWithEmailAndPassword(info.email, info.password);

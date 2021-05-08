@@ -20,7 +20,14 @@ export class RegisterComponent {
   ) {}
 
   onRegister(form: FormGroup): void {
-    this.userService.register(this.userService.getLoginInfoFromForm(form));
+    this.userService
+      .register(this.userService.getLoginInfoFromForm(form))
+      .then(() => {
+        this.router.navigate(['home']);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   onNeedToLoginClick(): void {

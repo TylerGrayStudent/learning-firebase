@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from './material.module';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PERSISTENCE, SETTINGS as AUTH_SETTINGS } from '@angular/fire/auth';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [],
