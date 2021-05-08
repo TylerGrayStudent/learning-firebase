@@ -1,4 +1,4 @@
-import { LoginService } from './../../../shared/services/login.service';
+import { UserService } from './../../../shared/services/user/user.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { loginForm } from '../../data/login-form';
@@ -15,19 +15,12 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private login: LoginService,
+    private userService: UserService,
     private router: Router
   ) {}
 
   onLogin(form: FormGroup): void {
-    this.login
-      .login(this.login.getLoginInfoFromForm(form))
-      .then((res) => {
-        this.router.navigate(['home']);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    this.userService.login(this.userService.getLoginInfoFromForm(form));
   }
 
   onNeedToRegisterClick(): void {

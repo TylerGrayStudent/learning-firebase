@@ -1,13 +1,8 @@
-import { LoginService } from './../../../shared/services/login.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {
-  Component,
-  ChangeDetectionStrategy,
-  EventEmitter,
-  Output,
-} from '@angular/core';
-import { loginForm } from '../../data/login-form';
 import { Router } from '@angular/router';
+import { loginForm } from '../../data/login-form';
+import { UserService } from './../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-register',
@@ -20,19 +15,12 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private login: LoginService,
+    private userService: UserService,
     private router: Router
   ) {}
 
   onRegister(form: FormGroup): void {
-    this.login
-      .register(this.login.getLoginInfoFromForm(form))
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    this.userService.register(this.userService.getLoginInfoFromForm(form));
   }
 
   onNeedToLoginClick(): void {
