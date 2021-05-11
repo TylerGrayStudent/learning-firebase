@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSidenav } from '@angular/material/sidenav';
-import { UserService } from '../../core/user/user.service';
+import { UserService } from '../../../../core/user/user.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -5,7 +5,9 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { APPLICATION_TITLE } from '../../../../shared/data/strings';
+import { UserService } from './../../../../core/user/user.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -18,5 +20,13 @@ export class TopBarComponent {
   @Input() profilePic: string | undefined;
   public title = APPLICATION_TITLE;
 
-  constructor() {}
+  constructor(private userService: UserService, private router: Router) {}
+
+  onLogoutClick(): void {
+    this.userService.logout().then(() => this.router.navigate(['login']));
+  }
+
+  onManageUserClick(): void {}
+
+  onManageSettingsClick(): void {}
 }

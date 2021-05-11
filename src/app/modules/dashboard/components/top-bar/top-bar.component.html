@@ -6,6 +6,28 @@
       </button>
       <span class="spacer"></span>
       <span>{{ title }}</span>
+      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>account_circle</mat-icon>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item (click)="onManageUserClick()">
+            <span class="flex-center">
+              Manage User <span class="spacer"></span
+              ><span class="spacer"></span><mat-icon>person</mat-icon>
+            </span>
+          </button>
+          <button mat-menu-item (click)="onManageSettingsClick()">
+            <span class="flex-center">
+              Manage Settings<span class="spacer"></span>
+              <span class="spacer"></span><mat-icon>settings</mat-icon>
+            </span>
+          </button>
+          <button mat-menu-item (click)="onLogoutClick()">
+            <span class="flex-center">
+              Logout <span class="spacer"></span><mat-icon>logout</mat-icon>
+            </span>
+          </button>
+        </mat-menu>
+      </button>
     </mat-toolbar-row>
   </mat-toolbar>
 </p>

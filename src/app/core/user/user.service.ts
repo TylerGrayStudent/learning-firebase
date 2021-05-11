@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormGroup } from '@angular/forms';
 import { EMPTY } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 export interface LoginInfo {
   email: string;
@@ -20,7 +20,9 @@ export class UserService {
     private fs: AngularFirestore,
     private storage: AngularFireStorage
   ) {}
+
   public user$ = this.auth.user;
+  public loggedIn$ = this.auth.user.pipe(map((user) => !!user));
   public profile$ = this.user$.pipe(
     switchMap((user) => {
       if (user?.uid) {
