@@ -5,6 +5,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { FormGroup } from '@angular/forms';
 import { EMPTY } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { ToolboxService } from './../../shared/services/toolbox.service';
 
 export interface LoginInfo {
   email: string;
@@ -18,7 +19,8 @@ export class UserService {
   constructor(
     private auth: AngularFireAuth,
     private fs: AngularFirestore,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private toolbox: ToolboxService
   ) {}
 
   public user$ = this.auth.user;
@@ -41,15 +43,19 @@ export class UserService {
   );
 
   login(info: LoginInfo): Promise<any | never> {
-    return this.auth.signInWithEmailAndPassword(info.email, info.password);
+    return this.toolbox.showSpinnerOnPromise(
+      this.auth.signInWithEmailAndPassword(info.email, info.password)
+    );
   }
 
   register(info: LoginInfo): Promise<any | never> {
-    return this.auth.createUserWithEmailAndPassword(info.email, info.password);
+    return this.toolbox.showSpinnerOnPromise(
+      this.auth.createUserWithEmailAndPassword(info.email, info.password)
+    );
   }
 
   logout(): Promise<any | never> {
-    return this.auth.signOut();
+    return this.toolbox.showSpinnerOnPromise(this.auth.signOut());
   }
 
   getLoginInfoFromForm(form: FormGroup): LoginInfo {

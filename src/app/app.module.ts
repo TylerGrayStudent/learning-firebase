@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MaterialModule } from './shared/modules/material.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { AppComponent } from './app.component';
     AngularFireStorageModule,
     AngularFireAuthModule,
     CoreModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

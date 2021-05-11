@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../core/user/user.service';
 import { loginForm } from '../../data/login-form';
+import { ToolboxService } from './../../../../shared/services/toolbox.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private toolbox: ToolboxService
   ) {}
 
   onRegister(form: FormGroup): void {

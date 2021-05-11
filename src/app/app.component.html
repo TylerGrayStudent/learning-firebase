@@ -1,1 +1,7 @@
+<mat-progress-bar
+  *ngIf="spinning$ | async"
+  mode="indeterminate"
+  style="position: absolute"
+></mat-progress-bar>
+
 <router-outlet></router-outlet>
