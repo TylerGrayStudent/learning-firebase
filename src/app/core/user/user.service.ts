@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { EMPTY } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 export interface LoginInfo {
   email: string;
@@ -12,8 +15,28 @@ export interface LoginInfo {
   providedIn: 'root',
 })
 export class UserService {
+  constructor(
+    private auth: AngularFireAuth,
+    private fs: AngularFirestore,
+    private storage: AngularFireStorage
+  ) {}
   public user$ = this.auth.user;
-  constructor(private auth: AngularFireAuth, private router: Router) {}
+  public profile$ = this.user$.pipe(
+    switchMap((user) => {
+      if (user?.uid) {
+        return this.fs
+          .collection('profiles')
+          .doc(user?.uid || '')
+          .valueChanges();
+      }
+      return EMPTY;
+    })
+  );
+  public picture$ = this.profile$.pipe(
+    switchMap((profile: any) => {
+      return this.storage.ref(profile['profile-picture']).getDownloadURL();
+    })
+  );
 
   login(info: LoginInfo): Promise<any | never> {
     return this.auth.signInWithEmailAndPassword(info.email, info.password);
