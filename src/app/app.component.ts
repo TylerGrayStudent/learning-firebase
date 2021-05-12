@@ -14,10 +14,7 @@ export class AppComponent {
   public spinning$ = merge(this.toolbox.spinning$, this.toolbox.routing$).pipe(
     distinctUntilChanged()
   );
+  public progress$ = this.toolbox.progress$;
 
-  constructor(private toolbox: ToolboxService) {
-    this.spinning$.subscribe((val) => {
-      console.log(val);
-    });
-  }
+  constructor(private toolbox: ToolboxService) {}
 }

@@ -25,7 +25,7 @@ export class RegisterComponent {
     this.userService
       .register(this.userService.getLoginInfoFromForm(form))
       .then(() => {
-        this.router.navigate(['home']);
+        this.router.navigate(['']);
       })
       .catch((e) => {
         console.log(e);

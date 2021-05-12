@@ -18,6 +18,9 @@ $my-app-warn: mat-palette($mat-deep-orange);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);
 
+// regular style toast
+@import "~ngx-toastr/toastr";
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -29,4 +32,8 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 .flex-center {
   display: flex;
   align-items: center;
+}
+
+.padding-5 {
+  padding: 5px;
 }

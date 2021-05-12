@@ -13,7 +13,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.user$.pipe(take(1)).subscribe((user) => {
-      if (user) this.router.navigate(['home']);
+      if (user) this.router.navigate(['']);
     });
   }
 }

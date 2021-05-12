@@ -22,7 +22,7 @@ export class LoginComponent {
   onLogin(form: FormGroup): void {
     this.userService
       .login(this.userService.getLoginInfoFromForm(form))
-      .then(() => this.router.navigate(['home']))
+      .then(() => this.router.navigate(['']))
       .catch((e) => console.log(e));
   }
 

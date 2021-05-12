@@ -24,7 +24,12 @@ export class UserService {
   ) {}
 
   public user$ = this.auth.user;
-  public loggedIn$ = this.auth.user.pipe(map((user) => !!user));
+  public loggedIn$ = this.auth.user.pipe(
+    map((user) => {
+      console.log(user);
+      return !!user;
+    })
+  );
   public profile$ = this.user$.pipe(
     switchMap((user) => {
       if (user?.uid) {
