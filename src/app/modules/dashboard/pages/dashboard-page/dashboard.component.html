@@ -1,9 +1,11 @@
-<mat-sidenav-container>
-  <mat-sidenav mode="side" opened #sidenav>
-    <app-side-bar></app-side-bar>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <app-top-bar (menuClicked)="toggleSidenav(sideNavOpened)"> </app-top-bar>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened #sidenav>
+      <app-side-bar></app-side-bar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-top-bar (menuClicked)="toggleSidenav(sideNavOpened)"> </app-top-bar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
