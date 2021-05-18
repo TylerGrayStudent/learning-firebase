@@ -16,6 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/login/login.module').then((m) => m.LoginModule),
   },
+  { path: 'peer', loadChildren: () => import('./modules/peer/peer.module').then(m => m.PeerModule) },
 ];
 
 @NgModule({

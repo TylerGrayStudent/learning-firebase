@@ -1,15 +1,17 @@
-<mat-progress-bar
-  *ngIf="spinning$ | async"
-  mode="indeterminate"
-  style="position: absolute"
-></mat-progress-bar>
+<div>
+  <mat-progress-bar
+    *ngIf="spinning$ | async"
+    mode="indeterminate"
+    style="position: absolute"
+  ></mat-progress-bar>
 
-<mat-progress-bar
-  *ngIf="progress$ | async"
-  mode="determinate"
-  [value]="progress$ | async"
-  style="position: absolute; z-index: 100"
-  color="warn"
-></mat-progress-bar>
+  <mat-progress-bar
+    *ngIf="progress$ | async"
+    mode="determinate"
+    [value]="progress$ | async"
+    style="position: absolute; z-index: 100"
+    color="warn"
+  ></mat-progress-bar>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

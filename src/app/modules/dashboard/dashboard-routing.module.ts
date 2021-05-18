@@ -12,6 +12,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('../photos/photos.module').then((m) => m.PhotosModule),
       },
+      {
+        path: 'peer',
+        loadChildren: () =>
+          import('../peer/peer.module').then((m) => m.PeerModule),
+      },
     ],
   },
 ];

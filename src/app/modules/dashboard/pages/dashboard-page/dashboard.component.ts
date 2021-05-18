@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { UserService } from '../../../../core/user/user.service';
 
@@ -8,18 +7,14 @@ import { UserService } from '../../../../core/user/user.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
   public arr: number[] | undefined;
 
   public profile$ = this.userService.profile$;
 
   public sideNavOpened = true;
-  constructor(private userService: UserService, private fs: AngularFirestore) {}
-
-  ngOnInit(): void {
-    this.arr = [...Array(10000).keys()];
-  }
+  constructor(private userService: UserService) {}
 
   logout(): void {
     this.userService.logout();
