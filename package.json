@@ -1,13 +1,15 @@
 {
   "name": "learning-firebase",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "ng build --base-href ./ && electron ."
   },
   "private": true,
   "dependencies": {
@@ -39,12 +41,14 @@
     "@angular/cli": "~12.0.0",
     "@angular/compiler-cli": "~12.0.0",
     "@schematics/angular": "^11.2.11",
+    "@types/events": "^3.0.0",
     "@types/jasmine": "~3.6.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.20.13",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/eslint-plugin-tslint": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "codelyzer": "^6.0.0",
+    "electron": "^12.0.9",
     "eslint": "^7.25.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^33.1.0",

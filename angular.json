@@ -74,6 +74,9 @@
           "configurations": {
             "production": {
               "browserTarget": "LearningFirebase:build:production"
+            },
+            "test": {
+              "browserTarget": "LearningFirebase:build:dev-server"
             }
           }
         },
